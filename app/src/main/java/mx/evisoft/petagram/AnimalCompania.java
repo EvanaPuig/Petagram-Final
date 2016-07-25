@@ -6,10 +6,10 @@ package mx.evisoft.petagram;
 public class AnimalCompania {
 
     private String nombre;
-    private int numeroLikes;
+    private String numeroLikes;
     private int foto;
 
-    public AnimalCompania(String nombre, int numeroLikes, int foto) {
+    public AnimalCompania(String nombre, String numeroLikes, int foto) {
         this.nombre = nombre;
         this.numeroLikes = numeroLikes;
         this.foto = foto;
@@ -23,11 +23,11 @@ public class AnimalCompania {
         this.nombre = nombre;
     }
 
-    public int getNumeroLikes() {
+    public String getNumeroLikes() {
         return numeroLikes;
     }
 
-    public void setNumeroLikes(int numeroLikes) {
+    public void setNumeroLikes(String numeroLikes) {
         this.numeroLikes = numeroLikes;
     }
 
