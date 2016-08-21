@@ -28,6 +28,8 @@ public class FavoritosActivity extends AppCompatActivity {
         Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
         setSupportActionBar(miActionBar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         listaAnimalesCompania = (RecyclerView) findViewById(R.id.rvAnimalesCompania);
 
