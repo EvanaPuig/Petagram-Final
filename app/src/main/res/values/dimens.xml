@@ -7,4 +7,5 @@
     <dimen name="padding_right_likes">10dp</dimen>
     <dimen name="padding_imagen">30dp</dimen>
     <dimen name="padding_hueso">10dp</dimen>
+    <dimen name="elevacion_action_bar">4dp</dimen>
 </resources>

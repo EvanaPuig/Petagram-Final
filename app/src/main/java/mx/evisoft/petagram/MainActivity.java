@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        setSupportActionBar(miActionBar);
+
+
         listaAnimalesCompania = (RecyclerView) findViewById(R.id.rvAnimalesCompania);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -31,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
 
         inicializarListaAnimalesCompania();
         inicializarAdaptador();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Toolbar tb = (Toolbar) findViewById(R.id.miActionBar);
+        tb.inflateMenu(R.menu.action_favoritos);
+        tb.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        return onOptionsItemSelected(item);
+                    }
+                });
+
+        return true;
     }
 
     public void inicializarAdaptador(){
