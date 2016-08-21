@@ -4,6 +4,7 @@ package mx.evisoft.petagram;
  * Created by Evana Margain Puig on 24/07/16.
  */
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 new Toolbar.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+                        Intent intentFavoritos = new Intent(MainActivity.this, FavoritosActivity.class);
+                        startActivity(intentFavoritos);
                         return onOptionsItemSelected(item);
                     }
                 });
