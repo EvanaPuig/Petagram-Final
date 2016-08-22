@@ -30,11 +30,22 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
     }
 
     @Override
-    public void onBindViewHolder(AnimalCompaniaViewHolder animalCompaniaViewHolder, int position) {
-        AnimalCompania animalCompania = animalesCompania.get(position);
+    public void onBindViewHolder(final AnimalCompaniaViewHolder animalCompaniaViewHolder, int position) {
+        final AnimalCompania animalCompania = animalesCompania.get(position);
         animalCompaniaViewHolder.imgvFotoAnimalCompania.setImageResource(animalCompania.getFoto());
         animalCompaniaViewHolder.txtvNombre.setText(animalCompania.getNombre());
         animalCompaniaViewHolder.txtvLikes.setText(animalCompania.getNumeroLikes());
+
+
+        animalCompaniaViewHolder.imgvHuesoBlanco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer numeroLikes = Integer.parseInt(animalCompania.getNumeroLikes());
+                numeroLikes += 1;
+                animalCompania.setNumeroLikes(numeroLikes.toString());
+                animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
+            }
+        });
     }
 
     @Override
@@ -46,12 +57,15 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
         private ImageView imgvFotoAnimalCompania;
         private TextView txtvNombre;
         private TextView txtvLikes;
+        private ImageView imgvHuesoBlanco;
+
 
         public AnimalCompaniaViewHolder(View itemView){
             super(itemView);
             imgvFotoAnimalCompania = (ImageView) itemView.findViewById(R.id.imgvFotoAnimalCompania);
             txtvNombre = (TextView) itemView.findViewById(R.id.txtvNombre);
             txtvLikes = (TextView) itemView.findViewById(R.id.txtvLikes);
+            imgvHuesoBlanco = (ImageView) itemView.findViewById(R.id.imgvHuesoBlanco);
         }
     }
 }

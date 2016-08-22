@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
     public void inicializarListaAnimalesCompania(){
         animalesCompania = new ArrayList<AnimalCompania>();
 
-        animalesCompania.add(new AnimalCompania("Lucky", "3", R.drawable.perro1));
-        animalesCompania.add(new AnimalCompania("Huevo", "5", R.drawable.perro2));
-        animalesCompania.add(new AnimalCompania("Chola", "7", R.drawable.perro3));
-        animalesCompania.add(new AnimalCompania("Taffy", "3", R.drawable.perro4));
-        animalesCompania.add(new AnimalCompania("Sally", "3", R.drawable.perro5));
-        animalesCompania.add(new AnimalCompania("Fluffy", "3", R.drawable.perro6));
-        animalesCompania.add(new AnimalCompania("Pluto", "3", R.drawable.perro7));
-        animalesCompania.add(new AnimalCompania("Doggy", "3", R.drawable.perro8));
+        animalesCompania.add(new AnimalCompania("Lucky", "0", R.drawable.perro1));
+        animalesCompania.add(new AnimalCompania("Huevo", "0", R.drawable.perro2));
+        animalesCompania.add(new AnimalCompania("Chola", "0", R.drawable.perro3));
+        animalesCompania.add(new AnimalCompania("Taffy", "0", R.drawable.perro4));
+        animalesCompania.add(new AnimalCompania("Sally", "0", R.drawable.perro5));
+        animalesCompania.add(new AnimalCompania("Fluffy", "0", R.drawable.perro6));
+        animalesCompania.add(new AnimalCompania("Pluto", "0", R.drawable.perro7));
+        animalesCompania.add(new AnimalCompania("Doggy", "0", R.drawable.perro8));
     }
 }
