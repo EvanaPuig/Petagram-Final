@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import mx.evisoft.petagram.Activities.AcercaDeActivity;
+import mx.evisoft.petagram.Activities.ContactoActivity;
 import mx.evisoft.petagram.RecyclerView.AnimalCompania;
 import mx.evisoft.petagram.RecyclerView.AnimalCompaniaAdaptador;
 import java.util.ArrayList;
@@ -59,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intentFavoritos);
                                 return onOptionsItemSelected(item);
                             case R.id.action_contacto:
-                                Toast.makeText(getApplicationContext(), "action contacto", Toast.LENGTH_LONG).show();
+                                Intent intentContacto = new Intent(MainActivity.this, ContactoActivity.class);
+                                startActivity(intentContacto);
                                 return onOptionsItemSelected(item);
                             case  R.id.action_acerca_de:
-                                Toast.makeText(getApplicationContext(), "action acerca de", Toast.LENGTH_LONG).show();
+                                Intent intentAcercaDe = new Intent(MainActivity.this, AcercaDeActivity.class);
+                                startActivity(intentAcercaDe);
                                 return onOptionsItemSelected(item);
                         }
 
