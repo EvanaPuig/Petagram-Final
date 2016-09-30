@@ -18,7 +18,7 @@ import mx.evisoft.petagram.RecyclerView.AnimalCompania;
 import mx.evisoft.petagram.RecyclerView.AnimalCompaniaAdaptador;
 import java.util.ArrayList;
 
-import mx.evisoft.petagram.RecyclerView.FavoritosActivity;
+import mx.evisoft.petagram.Activities.FavoritosActivity;
 
 public class MainActivity extends AppCompatActivity {
 
