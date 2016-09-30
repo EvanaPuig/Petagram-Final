@@ -1,4 +1,4 @@
-package mx.evisoft.petagram;
+package mx.evisoft.petagram.RecyclerView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import mx.evisoft.petagram.R;
+
 /**
- * Created by softtek on 24/07/16.
+ * Created by Evana Margáin Puig on 24/07/16.
  */
 public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompaniaAdaptador.AnimalCompaniaViewHolder> {
 

@@ -7,14 +7,18 @@ package mx.evisoft.petagram;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.RecyclerView.AnimalCompaniaAdaptador;
 import java.util.ArrayList;
+
+import mx.evisoft.petagram.RecyclerView.FavoritosActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,9 +53,20 @@ public class MainActivity extends AppCompatActivity {
                 new Toolbar.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Intent intentFavoritos = new Intent(MainActivity.this, FavoritosActivity.class);
-                        startActivity(intentFavoritos);
-                        return onOptionsItemSelected(item);
+                        switch (item.getItemId()){
+                            case R.id.action_favs:
+                                Intent intentFavoritos = new Intent(MainActivity.this, FavoritosActivity.class);
+                                startActivity(intentFavoritos);
+                                return onOptionsItemSelected(item);
+                            case R.id.action_contacto:
+                                Toast.makeText(getApplicationContext(), "action contacto", Toast.LENGTH_LONG).show();
+                                return onOptionsItemSelected(item);
+                            case  R.id.action_acerca_de:
+                                Toast.makeText(getApplicationContext(), "action acerca de", Toast.LENGTH_LONG).show();
+                                return onOptionsItemSelected(item);
+                        }
+
+                        return false;
                     }
                 });
 

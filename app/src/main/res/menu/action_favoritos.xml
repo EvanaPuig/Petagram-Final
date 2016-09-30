@@ -11,8 +11,14 @@
     </item>
 
     <item
-        android:id="@+id/action_otro"
-        android:title="Otro boton">
+        android:id="@+id/action_contacto"
+        android:title="Contacto">
+
+    </item>
+
+    <item
+        android:id="@+id/action_acerca_de"
+        android:title="Acerca de">
 
     </item>
 </menu>
