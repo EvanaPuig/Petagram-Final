@@ -1,4 +1,4 @@
-package mx.evisoft.petagram;
+package mx.evisoft.petagram.RecyclerView;
 
 /**
  * Created by Evana Margain Puig on 24/07/16.
