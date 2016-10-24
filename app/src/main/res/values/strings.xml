@@ -2,6 +2,7 @@
     <string name="app_name">Petagram</string>
 
     <string name="titulo_acerca_de">Acerca de</string>
+    <string name="texto_bio_desarrollador">Soy Evana, una desarrolladora de apps móviles.</string>
 
 
     <!-- Pantalla Contacto  -->
@@ -11,4 +12,7 @@
     <string name="ph_email">Email</string>
     <string name="ph_descripcion">Mensaje</string>
     <string name="btn_siguiente">Enviar Comentario</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
