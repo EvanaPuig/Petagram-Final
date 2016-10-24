@@ -58,7 +58,7 @@ public class RecyclerViewFragment extends Fragment {
 
         animalesCompania.add(new AnimalCompania("Lucky", "0", R.drawable.perro1));
         animalesCompania.add(new AnimalCompania("Huevo", "0", R.drawable.perro2));
-        animalesCompania.add(new AnimalCompania("Chola", "0", R.drawable.perro3));
+        animalesCompania.add(new AnimalCompania("Xola", "0", R.drawable.perro3));
         animalesCompania.add(new AnimalCompania("Taffy", "0", R.drawable.perro4));
         animalesCompania.add(new AnimalCompania("Sally", "0", R.drawable.perro5));
         animalesCompania.add(new AnimalCompania("Fluffy", "0", R.drawable.perro6));
