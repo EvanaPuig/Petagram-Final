@@ -17,6 +17,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/titulo_acerca_de"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="99dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

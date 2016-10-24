@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Petagram</string>
-    <string name="titulo_contacto">Contacto</string>
+
     <string name="titulo_acerca_de">Acerca de</string>
+
+
+    <!-- Pantalla Contacto  -->
+    <!-- Placeholders -->
+    <string name="titulo_contacto">Contacto</string>
+    <string name="ph_nombre_completo">Nombre</string>
+    <string name="ph_email">Email</string>
+    <string name="ph_descripcion">Mensaje</string>
+    <string name="btn_siguiente">Enviar Comentario</string>
 </resources>
