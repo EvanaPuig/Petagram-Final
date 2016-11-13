@@ -8,11 +8,20 @@ public class AnimalCompania {
     private String nombre;
     private String numeroLikes;
     private int foto;
+    private int id;
 
     public AnimalCompania(String nombre, String numeroLikes, int foto) {
         this.nombre = nombre;
         this.numeroLikes = numeroLikes;
         this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
