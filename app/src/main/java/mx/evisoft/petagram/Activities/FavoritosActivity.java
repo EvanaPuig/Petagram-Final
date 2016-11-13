@@ -1,4 +1,4 @@
-package mx.evisoft.petagram;
+package mx.evisoft.petagram.Activities;
 
 /**
  * Created by Evana Margain Puig on 24/07/16.
@@ -6,14 +6,15 @@ package mx.evisoft.petagram;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.ArrayList;
+
+import mx.evisoft.petagram.R;
+import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.adapter.AnimalCompaniaAdaptador;
 
 public class FavoritosActivity extends AppCompatActivity {
 

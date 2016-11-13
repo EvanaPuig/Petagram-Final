@@ -1,35 +1,16 @@
-package mx.evisoft.petagram;
+package mx.evisoft.petagram.RecyclerView;
 
 /**
  * Created by Evana Margain Puig on 24/07/16.
  */
-public class AnimalCompania {
+public class AnimalCompaniaProfile {
 
-    private String nombre;
     private String numeroLikes;
     private int foto;
-    private int id;
 
-    public AnimalCompania(String nombre, String numeroLikes, int foto) {
-        this.nombre = nombre;
+    public AnimalCompaniaProfile(String numeroLikes, int foto) {
         this.numeroLikes = numeroLikes;
         this.foto = foto;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getNumeroLikes() {
