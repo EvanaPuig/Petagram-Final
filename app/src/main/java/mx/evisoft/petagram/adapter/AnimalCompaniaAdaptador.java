@@ -1,5 +1,7 @@
 package mx.evisoft.petagram.adapter;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
 import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.db.BaseDatos;
+import mx.evisoft.petagram.db.ConstantesBaseDatos;
 
 /**
  * Created by Evana Margáin Puig on 24/07/16.
@@ -19,8 +23,12 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
 
     ArrayList<AnimalCompania> animalesCompania;
 
-    public AnimalCompaniaAdaptador(ArrayList<AnimalCompania> animalesCompania){
+    private Context context;
+
+
+    public AnimalCompaniaAdaptador(ArrayList<AnimalCompania> animalesCompania, Context context){
         this.animalesCompania = animalesCompania;
+        this.context = context;
     }
 
 
@@ -37,16 +45,24 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
         final AnimalCompania animalCompania = animalesCompania.get(position);
         animalCompaniaViewHolder.imgvFotoAnimalCompania.setImageResource(animalCompania.getFoto());
         animalCompaniaViewHolder.txtvNombre.setText(animalCompania.getNombre());
-        animalCompaniaViewHolder.txtvLikes.setText(animalCompania.getNumeroLikes());
+
+        Integer numeroLikes = animalCompania.getNumeroLikes();
+
+        animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
 
 
         animalCompaniaViewHolder.imgvHuesoBlanco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer numeroLikes = Integer.parseInt(animalCompania.getNumeroLikes());
+                Integer numeroLikes = animalCompania.getNumeroLikes();
                 numeroLikes += 1;
-                animalCompania.setNumeroLikes(numeroLikes.toString());
+                animalCompania.setNumeroLikes(numeroLikes);
                 animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
+
+                BaseDatos db = new BaseDatos(context);
+                insertarContactoLike(db, animalCompania);
+
+
             }
         });
     }
@@ -70,5 +86,17 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
             txtvLikes = (TextView) itemView.findViewById(R.id.txtvLikes);
             imgvHuesoBlanco = (ImageView) itemView.findViewById(R.id.imgvHuesoBlanco);
         }
+    }
+
+    public void insertarContactoLike(BaseDatos db, AnimalCompania animalCompania){
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_ID, animalCompania.getId());
+        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_NOMBRE, animalCompania.getNombre());
+        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_NUMERO_LIKES, animalCompania.getNumeroLikes());
+        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_FOTO, animalCompania.getFoto());
+
+        db.actualizarAnimalCompania(contentValues, animalCompania);
+
     }
 }

@@ -6,14 +6,19 @@ package mx.evisoft.petagram.RecyclerView;
 public class AnimalCompania {
 
     private String nombre;
-    private String numeroLikes;
+    private int numeroLikes;
     private int foto;
     private int id;
 
-    public AnimalCompania(String nombre, String numeroLikes, int foto) {
+    public AnimalCompania(int id, String nombre, int numeroLikes, int foto) {
+        this.id = id;
         this.nombre = nombre;
         this.numeroLikes = numeroLikes;
         this.foto = foto;
+    }
+
+    public AnimalCompania() {
+
     }
 
     public int getId() {
@@ -32,11 +37,11 @@ public class AnimalCompania {
         this.nombre = nombre;
     }
 
-    public String getNumeroLikes() {
+    public int getNumeroLikes() {
         return numeroLikes;
     }
 
-    public void setNumeroLikes(String numeroLikes) {
+    public void setNumeroLikes(int numeroLikes) {
         this.numeroLikes = numeroLikes;
     }
 
