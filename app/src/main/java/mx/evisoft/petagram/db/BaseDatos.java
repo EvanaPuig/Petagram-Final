@@ -1,16 +1,14 @@
 package mx.evisoft.petagram.db;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.model.AnimalCompania;
 
 /**
  * Created by Evana Margáin Puig on 13/11/16.

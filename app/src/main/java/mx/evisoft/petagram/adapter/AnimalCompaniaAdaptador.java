@@ -1,5 +1,6 @@
 package mx.evisoft.petagram.adapter;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.model.AnimalCompania;
 import mx.evisoft.petagram.db.BaseDatos;
 import mx.evisoft.petagram.db.ConstantesBaseDatos;
+import mx.evisoft.petagram.model.ConstructorAnimalCompania;
 
 /**
  * Created by Evana Margáin Puig on 24/07/16.
@@ -23,12 +26,12 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
 
     ArrayList<AnimalCompania> animalesCompania;
 
-    private Context context;
+    Activity activity;
 
 
-    public AnimalCompaniaAdaptador(ArrayList<AnimalCompania> animalesCompania, Context context){
+    public AnimalCompaniaAdaptador(ArrayList<AnimalCompania> animalesCompania, Activity activity){
         this.animalesCompania = animalesCompania;
-        this.context = context;
+        this.activity = activity;
     }
 
 
@@ -50,17 +53,19 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
 
         animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
 
-
         animalCompaniaViewHolder.imgvHuesoBlanco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(activity, "Diste like a " + animalCompania.getNombre(),
+                        Toast.LENGTH_SHORT).show();
+
                 Integer numeroLikes = animalCompania.getNumeroLikes();
                 numeroLikes += 1;
                 animalCompania.setNumeroLikes(numeroLikes);
-                animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
 
-                BaseDatos db = new BaseDatos(context);
-                insertarContactoLike(db, animalCompania);
+                ConstructorAnimalCompania constructorAnimalCompania = new ConstructorAnimalCompania(activity);
+                constructorAnimalCompania.darLikeAnimalCompania(animalCompania);
+                animalCompaniaViewHolder.txtvLikes.setText(String.valueOf(animalCompania.getNumeroLikes()));
 
 
             }
@@ -86,17 +91,5 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
             txtvLikes = (TextView) itemView.findViewById(R.id.txtvLikes);
             imgvHuesoBlanco = (ImageView) itemView.findViewById(R.id.imgvHuesoBlanco);
         }
-    }
-
-    public void insertarContactoLike(BaseDatos db, AnimalCompania animalCompania){
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_ID, animalCompania.getId());
-        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_NOMBRE, animalCompania.getNombre());
-        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_NUMERO_LIKES, animalCompania.getNumeroLikes());
-        contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_FOTO, animalCompania.getFoto());
-
-        db.actualizarAnimalCompania(contentValues, animalCompania);
-
     }
 }

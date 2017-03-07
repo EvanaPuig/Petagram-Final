@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.Activities;
+package mx.evisoft.petagram.Fragment;
 
 
 import android.content.ContentValues;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
+import mx.evisoft.petagram.model.AnimalCompania;
 import mx.evisoft.petagram.adapter.AnimalCompaniaAdaptador;
 import mx.evisoft.petagram.db.BaseDatos;
 import mx.evisoft.petagram.db.ConstantesBaseDatos;
@@ -57,7 +57,7 @@ public class RecyclerViewFragment extends Fragment {
     }
 
     public void inicializarAdaptador(){
-        AnimalCompaniaAdaptador adaptador = new AnimalCompaniaAdaptador(animalesCompania, context);
+        AnimalCompaniaAdaptador adaptador = new AnimalCompaniaAdaptador(animalesCompania, getActivity());
         listaAnimalesCompania.setAdapter(adaptador);
     }
 

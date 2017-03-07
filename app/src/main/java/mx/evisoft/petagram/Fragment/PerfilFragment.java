@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.Activities;
+package mx.evisoft.petagram.Fragment;
 
 
 import android.os.Bundle;
@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
-import mx.evisoft.petagram.RecyclerView.AnimalCompaniaProfile;
-import mx.evisoft.petagram.adapter.AnimalCompaniaAdaptador;
+import mx.evisoft.petagram.model.AnimalCompaniaProfile;
 import mx.evisoft.petagram.adapter.AnimalCompaniaProfileAdaptador;
 
 /**

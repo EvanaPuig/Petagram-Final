@@ -10,20 +10,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import mx.evisoft.petagram.Activities.AcercaDeActivity;
-import mx.evisoft.petagram.Activities.ContactoActivity;
-import mx.evisoft.petagram.Activities.PerfilFragment;
-import mx.evisoft.petagram.Activities.RecyclerViewFragment;
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
-import mx.evisoft.petagram.adapter.AnimalCompaniaAdaptador;
+import mx.evisoft.petagram.Activity.AcercaDeActivity;
+import mx.evisoft.petagram.Activity.ContactoActivity;
+import mx.evisoft.petagram.Fragment.PerfilFragment;
+import mx.evisoft.petagram.Fragment.RecyclerViewFragment;
+
 import java.util.ArrayList;
 
-import mx.evisoft.petagram.Activities.FavoritosActivity;
+import mx.evisoft.petagram.Activity.FavoritosActivity;
 import mx.evisoft.petagram.adapter.PageAdapter;
 
 public class MainActivity extends AppCompatActivity {

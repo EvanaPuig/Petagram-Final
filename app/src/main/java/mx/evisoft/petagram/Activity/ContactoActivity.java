@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.Activities;
+package mx.evisoft.petagram.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

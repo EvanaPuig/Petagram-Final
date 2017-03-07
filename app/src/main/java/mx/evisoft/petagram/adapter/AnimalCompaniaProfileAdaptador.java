@@ -10,8 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.RecyclerView.AnimalCompania;
-import mx.evisoft.petagram.RecyclerView.AnimalCompaniaProfile;
+import mx.evisoft.petagram.model.AnimalCompaniaProfile;
 
 /**
  * Created by Evana Margáin Puig on 24/07/16.
