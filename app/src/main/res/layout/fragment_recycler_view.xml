@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.evisoft.petagram.Fragment.RecyclerViewFragment">
+    tools:context="mx.evisoft.petagram.fragment.RecyclerViewFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvAnimalesCompania"

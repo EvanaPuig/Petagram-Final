@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-import mx.evisoft.petagram.model.AnimalCompania;
+import mx.evisoft.petagram.pojo.AnimalCompania;
 
 /**
  * Created by Evana Margáin Puig on 13/11/16.
@@ -50,10 +50,10 @@ public class BaseDatos extends SQLiteOpenHelper {
         while(registros.moveToNext()){
             AnimalCompania animalCompaniaActual = new AnimalCompania();
 
-            animalCompaniaActual.setId(registros.getInt(0));
-            animalCompaniaActual.setNombre(registros.getString(1));
+            //animalCompaniaActual.setId(registros.getInt(0));
+            //animalCompaniaActual.setNombre(registros.getString(1));
             animalCompaniaActual.setNumeroLikes(registros.getInt(2));
-            animalCompaniaActual.setFoto(registros.getInt(3));
+            //animalCompaniaActual.setFoto(registros.getInt(3));
             animalesCompania.add(animalCompaniaActual);
         }
 
@@ -70,10 +70,10 @@ public class BaseDatos extends SQLiteOpenHelper {
         while(registros.moveToNext()){
             AnimalCompania animalCompaniaActual = new AnimalCompania();
 
-            animalCompaniaActual.setId(registros.getInt(0));
-            animalCompaniaActual.setNombre(registros.getString(1));
+            //animalCompaniaActual.setId(registros.getInt(0));
+            //animalCompaniaActual.setNombre(registros.getString(1));
             animalCompaniaActual.setNumeroLikes(registros.getInt(2));
-            animalCompaniaActual.setFoto(registros.getInt(3));
+            //animalCompaniaActual.setFoto(registros.getInt(3));
             animalesCompania.add(animalCompaniaActual);
         }
 

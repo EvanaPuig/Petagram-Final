@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.model;
+package mx.evisoft.petagram.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.util.Log;
 import mx.evisoft.petagram.db.BaseDatos;
 import mx.evisoft.petagram.db.ConstantesBaseDatos;
 import mx.evisoft.petagram.R;
+import mx.evisoft.petagram.pojo.AnimalCompania;
 
 import java.util.ArrayList;
 

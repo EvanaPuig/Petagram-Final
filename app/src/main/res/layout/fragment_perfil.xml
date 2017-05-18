@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="mx.evisoft.petagram.Fragment.PerfilFragment">
+    tools:context="mx.evisoft.petagram.fragment.PerfilFragment">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:layout_width="100dp"

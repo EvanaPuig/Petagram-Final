@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.Fragment;
+package mx.evisoft.petagram.fragment;
 
 
 import android.os.Bundle;

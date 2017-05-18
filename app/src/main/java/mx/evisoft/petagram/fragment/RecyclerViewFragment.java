@@ -1,10 +1,12 @@
-package mx.evisoft.petagram.Fragment;
+package mx.evisoft.petagram.fragment;
 
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,26 +16,23 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.model.AnimalCompania;
+import mx.evisoft.petagram.pojo.AnimalCompania;
 import mx.evisoft.petagram.adapter.AnimalCompaniaAdaptador;
 import mx.evisoft.petagram.db.BaseDatos;
 import mx.evisoft.petagram.db.ConstantesBaseDatos;
+import mx.evisoft.petagram.presentador.IRecyclerViewFragmentPresenter;
+import mx.evisoft.petagram.presentador.RecyclerViewFragmentPresenter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragmentView {
 
     private ArrayList<AnimalCompania> animalesCompania;
     private RecyclerView listaAnimalesCompania;
 
-    private Context context;
-
-    public RecyclerViewFragment() {
-        // Required empty public constructor
-    }
-
-
+    private IRecyclerViewFragmentPresenter presenter;
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,26 +42,16 @@ public class RecyclerViewFragment extends Fragment {
 
         listaAnimalesCompania = (RecyclerView) v.findViewById(R.id.rvAnimalesCompania);
 
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        presenter = new RecyclerViewFragmentPresenter(this, getContext());
 
-        listaAnimalesCompania.setLayoutManager(llm);
-
-        context = this.getContext();
-
-        inicializarListaAnimalesCompania();
-        inicializarAdaptador();
 
         return v;
     }
 
-    public void inicializarAdaptador(){
-        AnimalCompaniaAdaptador adaptador = new AnimalCompaniaAdaptador(animalesCompania, getActivity());
-        listaAnimalesCompania.setAdapter(adaptador);
-    }
 
+    /*
     public void inicializarListaAnimalesCompania(){
-        /*animalesCompania = new ArrayList<AnimalCompania>();
+        animalesCompania = new ArrayList<AnimalCompania>();
 
         animalesCompania.add(new AnimalCompania(1, "Lucky", "0", R.drawable.perro1));
         animalesCompania.add(new AnimalCompania(2, "Huevo", "0", R.drawable.perro2));
@@ -71,7 +60,7 @@ public class RecyclerViewFragment extends Fragment {
         animalesCompania.add(new AnimalCompania(5, "Sally", "0", R.drawable.perro5));
         animalesCompania.add(new AnimalCompania(6, "Fluffy", "0", R.drawable.perro6));
         animalesCompania.add(new AnimalCompania(7, "Pluto", "0", R.drawable.perro7));
-        animalesCompania.add(new AnimalCompania(8, "Doggy", "0", R.drawable.perro8));*/
+        animalesCompania.add(new AnimalCompania(8, "Doggy", "0", R.drawable.perro8));
 
         BaseDatos db = new BaseDatos(context);
         insertarAnimalesEjemplo(db);
@@ -150,8 +139,30 @@ public class RecyclerViewFragment extends Fragment {
         contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_FOTO, R.drawable.perro8);
 
         db.insertarAnimalCompania(contentValues);
+    }*/
+
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listaAnimalesCompania.setLayoutManager(llm);
     }
 
+    @Override
+    public void generarGridLayout() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        listaAnimalesCompania.setLayoutManager(gridLayoutManager);
+    }
 
+    @Override
+    public AnimalCompaniaAdaptador crearAdaptador(ArrayList<AnimalCompania> animalCompania) {
+        AnimalCompaniaAdaptador adaptador = new AnimalCompaniaAdaptador(animalesCompania, getActivity()  );
+        return adaptador;
+    }
 
+    @Override
+    public void inicializarAdaptadorRV(AnimalCompaniaAdaptador adaptador) {
+        listaAnimalesCompania.setAdapter(adaptador);
+    }
 }
