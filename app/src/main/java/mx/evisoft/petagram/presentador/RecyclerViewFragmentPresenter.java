@@ -4,9 +4,11 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import mx.evisoft.petagram.db.ConstructorAnimalCompania;
 import mx.evisoft.petagram.pojo.AnimalCompania;
-import mx.evisoft.petagram.fragment.IRecyclerViewFragmentView;
+import mx.evisoft.petagram.vista.fragment.IRecyclerViewFragmentView;
 import mx.evisoft.petagram.restApi.EndpointsApi;
 import mx.evisoft.petagram.restApi.adapter.RestApiAdapter;
 import mx.evisoft.petagram.restApi.model.AnimalCompaniaResponse;
@@ -26,6 +28,7 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
     private Context context;
     private ConstructorAnimalCompania constructorAnimalCompania;
     private ArrayList<AnimalCompania> animalesCompania;
+
     private String TAG = this.getClass().getSimpleName();
 
     public RecyclerViewFragmentPresenter(IRecyclerViewFragmentView iRecyclerViewFragmentView, Context context) {
@@ -44,8 +47,10 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
 
     @Override
     public void obtenerMediosRecientes(){
+        Log.d(TAG, "obtenerMediosRecientes()");
         RestApiAdapter restApiAdapter = new RestApiAdapter();
-        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram();
+        Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
         Call<AnimalCompaniaResponse> animalCompaniaResponseCall= endpointsApi.getRecentMedia();
 
         animalCompaniaResponseCall.enqueue(new Callback<AnimalCompaniaResponse>() {
@@ -67,6 +72,7 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
 
     @Override
     public void mostrarAnimalesCompaniaRV() {
+        Log.d(TAG, "mostrarAnimalesCompaniaRV()");
         iRecyclerViewFragmentView.inicializarAdaptadorRV(iRecyclerViewFragmentView.crearAdaptador(animalesCompania));
         iRecyclerViewFragmentView.generarGridLayout();
     }

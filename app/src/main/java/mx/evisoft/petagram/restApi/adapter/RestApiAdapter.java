@@ -4,8 +4,12 @@ import com.google.gson.Gson;
 
 import mx.evisoft.petagram.restApi.ConstantesRestApi;
 import mx.evisoft.petagram.restApi.EndpointsApi;
+import mx.evisoft.petagram.restApi.deserializador.AnimalCompaniaDeserializador;
+import mx.evisoft.petagram.restApi.model.AnimalCompaniaResponse;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Created by evana.margain on 5/18/17.
@@ -13,14 +17,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestApiAdapter {
 
-    public EndpointsApi establecerConexionRestApiInstagram(){
-
-
+    public EndpointsApi establecerConexionRestApiInstagram(Gson gson){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ConstantesRestApi.ROOT_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         return retrofit.create(EndpointsApi.class);
+    }
+
+    public Gson construyeGsonDeserializadorMediaRecent(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(AnimalCompaniaResponse.class, new AnimalCompaniaDeserializador());
+        return gsonBuilder.create();
     }
 }

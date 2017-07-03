@@ -8,12 +8,12 @@ public class AnimalCompania {
     private String id;
     private String nombreCompleto;
     private String urlFoto;
-    private int numeroLikes;
+    private int likes = 0;
 
     public AnimalCompania(String urlFoto, String nombreCompleto, int numeroLikes) {
         this.urlFoto = urlFoto;
         this.nombreCompleto = nombreCompleto;
-        this.numeroLikes = numeroLikes;
+        this.likes = numeroLikes;
 
     }
 
@@ -45,11 +45,11 @@ public class AnimalCompania {
         this.urlFoto = urlFoto;
     }
 
-    public int getNumeroLikes() {
-        return numeroLikes;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setNumeroLikes(int numeroLikes) {
-        this.numeroLikes = numeroLikes;
+    public void setNumeroLikes(int likes) {
+        this.likes = likes;
     }
 }

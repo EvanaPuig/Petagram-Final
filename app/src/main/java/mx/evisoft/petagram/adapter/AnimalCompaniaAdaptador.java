@@ -46,7 +46,7 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
         //animalCompaniaViewHolder.imgvFotoAnimalCompania.setImageResource(animalCompania.getFoto());
         //animalCompaniaViewHolder.txtvNombre.setText(animalCompania.getNombre());
 
-        Integer numeroLikes = animalCompania.getNumeroLikes();
+        Integer numeroLikes = animalCompania.getLikes();
 
         animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
 
@@ -56,7 +56,7 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
                 //Toast.makeText(activity, animalCompania.getNombre(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(activity, DetalleAnimalCompania.class);
                 intent.putExtra("url", animalCompania.getUrlFoto());
-                intent.putExtra("like", animalCompania.getNumeroLikes());
+                intent.putExtra("like", animalCompania.getLikes());
                 activity.startActivity(intent);
 
             }

@@ -67,7 +67,7 @@ public class ConstructorAnimalCompania {
         contentValues.put(ConstantesBaseDatos.TABLE_ANIMAL_COMPANIA_ID, animalCompania.getId());
 
 
-        int nuevoLike = animalCompania.getNumeroLikes() + 1;
+        int nuevoLike = animalCompania.getLikes() + 1;
 
         Log.d(TAG, String.valueOf(nuevoLike));
 

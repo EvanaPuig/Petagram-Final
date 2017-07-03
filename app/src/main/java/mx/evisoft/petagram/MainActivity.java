@@ -16,8 +16,8 @@ import android.view.MenuItem;
 
 import mx.evisoft.petagram.Activity.AcercaDeActivity;
 import mx.evisoft.petagram.Activity.ContactoActivity;
-import mx.evisoft.petagram.fragment.PerfilFragment;
-import mx.evisoft.petagram.fragment.RecyclerViewFragment;
+import mx.evisoft.petagram.vista.fragment.PerfilFragment;
+import mx.evisoft.petagram.vista.fragment.RecyclerViewFragment;
 
 import java.util.ArrayList;
 
