@@ -1,4 +1,4 @@
-package mx.evisoft.petagram.model;
+package mx.evisoft.petagram.pojo;
 
 /**
  * Created by Evana Margain Puig on 24/07/16.

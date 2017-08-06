@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
-import mx.evisoft.petagram.model.AnimalCompaniaProfile;
+import mx.evisoft.petagram.pojo.AnimalCompaniaProfile;
 import mx.evisoft.petagram.adapter.AnimalCompaniaProfileAdaptador;
 
 /**
