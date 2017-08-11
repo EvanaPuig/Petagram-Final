@@ -1,5 +1,6 @@
 package mx.evisoft.petagram.adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.R;
+import mx.evisoft.petagram.pojo.AnimalCompania;
 import mx.evisoft.petagram.pojo.AnimalCompaniaProfile;
 
 /**
@@ -17,10 +21,13 @@ import mx.evisoft.petagram.pojo.AnimalCompaniaProfile;
  */
 public class AnimalCompaniaProfileAdaptador extends RecyclerView.Adapter<AnimalCompaniaProfileAdaptador.AnimalCompaniaViewHolder> {
 
-    ArrayList<AnimalCompaniaProfile> fotos;
+    ArrayList<AnimalCompania> animalesCompania;
 
-    public AnimalCompaniaProfileAdaptador(ArrayList<AnimalCompaniaProfile> fotos){
-        this.fotos = fotos;
+    Activity activity;
+
+    public AnimalCompaniaProfileAdaptador(ArrayList<AnimalCompania> animalesCompania, Activity activity){
+        this.animalesCompania = animalesCompania;
+        this.activity = activity;
     }
 
 
@@ -34,15 +41,19 @@ public class AnimalCompaniaProfileAdaptador extends RecyclerView.Adapter<AnimalC
 
     @Override
     public void onBindViewHolder(final AnimalCompaniaViewHolder animalCompaniaViewHolder, int position) {
-        final AnimalCompaniaProfile animalCompania = fotos.get(position);
-        animalCompaniaViewHolder.imgvFotoAnimalCompania.setImageResource(animalCompania.getFoto());
-        animalCompaniaViewHolder.txtvLikes.setText(animalCompania.getNumeroLikes());
+        //final AnimalCompaniaProfile animalCompania = fotos.get(position);
+        final AnimalCompania animalCompania = animalesCompania.get(position);
+        Picasso.with(activity)
+                .load(animalCompania.getUrlFoto())
+                .placeholder(R.drawable.perro2)
+                .into(animalCompaniaViewHolder.imgvFotoAnimalCompania);
+        animalCompaniaViewHolder.txtvLikes.setText(animalCompania.getLikes());
 
     }
 
     @Override
     public int getItemCount() {
-        return fotos.size();
+        return animalesCompania.size();
     }
 
     public static class AnimalCompaniaViewHolder extends RecyclerView.ViewHolder{

@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by evana.margain on 5/18/17.
@@ -28,6 +29,12 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
     private Context context;
     private ConstructorAnimalCompania constructorAnimalCompania;
     private ArrayList<AnimalCompania> animalesCompania;
+    private ArrayList<AnimalCompania> animalesCompania2;
+    private ArrayList<AnimalCompania> animalesCompania3;
+    private ArrayList<AnimalCompania> animalesCompaniaCompleto;
+    private boolean service1 = false;
+    private boolean service2 = false;
+    private boolean service3 = false;
 
     private String TAG = this.getClass().getSimpleName();
 
@@ -51,14 +58,18 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<AnimalCompaniaResponse> animalCompaniaResponseCall= endpointsApi.getRecentMedia();
+
+        Call<AnimalCompaniaResponse> animalCompaniaResponseCall= endpointsApi.getRecentMediaEvi();
 
         animalCompaniaResponseCall.enqueue(new Callback<AnimalCompaniaResponse>() {
             @Override
             public void onResponse(Call<AnimalCompaniaResponse> call, Response<AnimalCompaniaResponse> response) {
                 AnimalCompaniaResponse animalCompaniaResponse = response.body();
-                animalesCompania = animalCompaniaResponse.getAnimalesCompania();
-                mostrarAnimalesCompaniaRV();
+                animalesCompania2 = animalCompaniaResponse.getAnimalesCompania();
+                service2 = true;
+                if(service1 == true && service2 == true && service3 == true){
+                    mostrarAnimalesCompaniaRV();
+                }
             }
 
             @Override
@@ -68,12 +79,62 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
                 Log.e(TAG, "Falló la conexión " + t.toString());
             }
         });
+
+        animalCompaniaResponseCall= endpointsApi.getRecentMediaMarilyn();
+
+        animalCompaniaResponseCall.enqueue(new Callback<AnimalCompaniaResponse>() {
+            @Override
+            public void onResponse(Call<AnimalCompaniaResponse> call, Response<AnimalCompaniaResponse> response) {
+                AnimalCompaniaResponse animalCompaniaResponse = response.body();
+                animalesCompania3 = animalCompaniaResponse.getAnimalesCompania();
+                service3 = true;
+                if(service1 == true && service2 == true && service3 == true){
+                    mostrarAnimalesCompaniaRV();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AnimalCompaniaResponse> call, Throwable t) {
+
+                Toast.makeText(context, "¡Algo pasó en la conexión! Intenta de nuevo", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Falló la conexión " + t.toString());
+            }
+        });
+
+        animalCompaniaResponseCall= endpointsApi.getRecentMedia();
+
+        animalCompaniaResponseCall.enqueue(new Callback<AnimalCompaniaResponse>() {
+            @Override
+            public void onResponse(Call<AnimalCompaniaResponse> call, Response<AnimalCompaniaResponse> response) {
+                AnimalCompaniaResponse animalCompaniaResponse = response.body();
+                animalesCompania = animalCompaniaResponse.getAnimalesCompania();
+                service1 = true;
+                if(service1 == true && service2 == true && service3 == true){
+                    mostrarAnimalesCompaniaRV();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AnimalCompaniaResponse> call, Throwable t) {
+
+                Toast.makeText(context, "¡Algo pasó en la conexión! Intenta de nuevo", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Falló la conexión " + t.toString());
+            }
+        });
+
+
     }
 
     @Override
     public void mostrarAnimalesCompaniaRV() {
         Log.d(TAG, "mostrarAnimalesCompaniaRV()");
-        iRecyclerViewFragmentView.inicializarAdaptadorRV(iRecyclerViewFragmentView.crearAdaptador(animalesCompania));
+        animalesCompania.addAll(animalesCompania2);
+        animalesCompania.addAll(animalesCompania3);
+        animalesCompaniaCompleto = animalesCompania;
+        Collections.shuffle(animalesCompaniaCompleto);
+        iRecyclerViewFragmentView.inicializarAdaptadorRV(iRecyclerViewFragmentView.crearAdaptador(animalesCompaniaCompleto));
         iRecyclerViewFragmentView.generarGridLayout();
     }
 }

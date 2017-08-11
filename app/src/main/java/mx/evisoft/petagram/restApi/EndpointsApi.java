@@ -12,4 +12,10 @@ public interface EndpointsApi {
 
     @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER)
     Call<AnimalCompaniaResponse> getRecentMedia();
+
+    @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_MARILYN)
+    Call<AnimalCompaniaResponse> getRecentMediaMarilyn();
+
+    @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_EVI)
+    Call<AnimalCompaniaResponse> getRecentMediaEvi();
 }

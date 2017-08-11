@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import mx.evisoft.petagram.Activity.AcercaDeActivity;
+import mx.evisoft.petagram.Activity.ConfigurarCuenta;
 import mx.evisoft.petagram.Activity.ContactoActivity;
 import mx.evisoft.petagram.vista.fragment.PerfilFragment;
 import mx.evisoft.petagram.vista.fragment.RecyclerViewFragment;
@@ -40,11 +41,22 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("user");
+
         setUpViewPager();
+
+        if(user != null){
+            viewPager.setCurrentItem(1);
+        }
+
+
 
         if(toolbar != null){
             setSupportActionBar(toolbar);
         }
+
+
     }
 
     @Override
@@ -67,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
                             case  R.id.action_acerca_de:
                                 Intent intentAcercaDe = new Intent(MainActivity.this, AcercaDeActivity.class);
                                 startActivity(intentAcercaDe);
+                                return onOptionsItemSelected(item);
+                            case R.id.action_configurar_cuenta:
+                                Intent intentConfigurarCuenta = new Intent(MainActivity.this, ConfigurarCuenta.class);
+                                startActivity(intentConfigurarCuenta);
                                 return onOptionsItemSelected(item);
                         }
 

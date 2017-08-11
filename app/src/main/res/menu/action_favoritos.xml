@@ -21,4 +21,9 @@
         android:title="Acerca de">
 
     </item>
+
+    <item
+        android:id="@+id/action_configurar_cuenta"
+        android:title="Configurar cuenta">
+    </item>
 </menu>

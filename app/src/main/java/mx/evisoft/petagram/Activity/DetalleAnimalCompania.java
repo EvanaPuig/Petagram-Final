@@ -1,4 +1,4 @@
-package mx.evisoft.petagram;
+package mx.evisoft.petagram.Activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import mx.evisoft.petagram.R;
 
 /**
  * Created by evana.margain on 5/17/17.
@@ -34,10 +38,17 @@ public class DetalleAnimalCompania extends AppCompatActivity {
 
         Bundle extras      = getIntent().getExtras();
         String url      = extras.getString(KEY_EXTRA_URL);
-        String likes    = extras.getString(KEY_EXTRA_LIKE);
+        int likes    = extras.getInt(KEY_EXTRA_LIKE);
 
         tvLikesDetalle     = (TextView) findViewById(R.id.txtvLikesDetalle);
 
         tvLikesDetalle.setText(String.valueOf(likes));
+
+        imgFotoDetalle = (ImageView) findViewById(R.id.imgvFotoDetalle);
+
+        Picasso.with(this)
+                .load(url)
+                .placeholder(R.drawable.perro2)
+                .into(imgFotoDetalle);
     }
 }

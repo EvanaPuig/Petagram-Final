@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import mx.evisoft.petagram.DetalleAnimalCompania;
+import mx.evisoft.petagram.Activity.DetalleAnimalCompania;
 import mx.evisoft.petagram.R;
 import mx.evisoft.petagram.pojo.AnimalCompania;
 
@@ -45,6 +46,10 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
         final AnimalCompania animalCompania = animalesCompania.get(position);
         //animalCompaniaViewHolder.imgvFotoAnimalCompania.setImageResource(animalCompania.getFoto());
         //animalCompaniaViewHolder.txtvNombre.setText(animalCompania.getNombre());
+        Picasso.with(activity)
+                .load(animalCompania.getUrlFoto())
+                .placeholder(R.drawable.perro2)
+                .into(animalCompaniaViewHolder.imgvFotoAnimalCompania);
 
         Integer numeroLikes = animalCompania.getLikes();
 

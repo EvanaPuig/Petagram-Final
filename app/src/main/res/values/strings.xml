@@ -4,6 +4,11 @@
     <string name="titulo_acerca_de">Acerca de</string>
     <string name="texto_bio_desarrollador">Soy Evana, una desarrolladora de apps móviles.</string>
 
+    <string name="titulo_configurar_cuenta">Configurar Cuenta</string>
+    <string name="placeholder_configurar_cuenta">Escribe tu usuario</string>
+    <string name="configurar_cuenta_instrucciones">NOTA: Los valores posibles son _pelusoo, xevixmp, marilynferetrius</string>
+    <string name="configurar_cuenta_btn">Guardar cuenta</string>
+
 
     <!-- Pantalla Contacto  -->
     <!-- Placeholders -->
