@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "241446225454",
+    "firebase_url": "https://petagram-17f61.firebaseio.com",
+    "project_id": "petagram-17f61",
+    "storage_bucket": "petagram-17f61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241446225454:android:02c428bb1d596d51",
+        "android_client_info": {
+          "package_name": "mx.evisoft.petagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241446225454-lk9k783lglimhg9bco4f7d0ju18k1kor.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.evisoft.petagram",
+            "certificate_hash": "773db72ff23eacacbf97309782828cf38e9a13c5"
+          }
+        },
+        {
+          "client_id": "241446225454-4o8kp7ds0cbl8c6bb6turt3vjsbbdoc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjrWJVfz4RStVXhjR5-mTBiDFHkXZfxCY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241446225454-4o8kp7ds0cbl8c6bb6turt3vjsbbdoc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
