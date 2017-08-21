@@ -11,12 +11,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import mx.evisoft.petagram.Activity.AcercaDeActivity;
 import mx.evisoft.petagram.Activity.ConfigurarCuenta;
 import mx.evisoft.petagram.Activity.ContactoActivity;
+import mx.evisoft.petagram.Activity.NotificationsActivity;
 import mx.evisoft.petagram.vista.fragment.PerfilFragment;
 import mx.evisoft.petagram.vista.fragment.RecyclerViewFragment;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +48,23 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
 
+
         setUpViewPager();
 
         if(user != null){
             viewPager.setCurrentItem(1);
         }
 
-
+        if(user != null){
+            Log.d("se seteo un usuario", user);
+            if(user.equals("xevixmp")){
+                userId = "2963122977";
+            }else if(user.equals("marilynferetrius")){
+                userId = "258515851";
+            }
+        }else{
+            userId = "2241246656";
+        }
 
         if(toolbar != null){
             setSupportActionBar(toolbar);
@@ -83,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_configurar_cuenta:
                                 Intent intentConfigurarCuenta = new Intent(MainActivity.this, ConfigurarCuenta.class);
                                 startActivity(intentConfigurarCuenta);
+                                return onOptionsItemSelected(item);
+                            case R.id.action_recibir_notificaciones:
+                                Intent intentRecibirNotificaciones = new Intent(MainActivity.this, NotificationsActivity.class);
+                                intentRecibirNotificaciones.putExtra("userIdInstagram", userId);
+                                startActivity(intentRecibirNotificaciones);
                                 return onOptionsItemSelected(item);
                         }
 

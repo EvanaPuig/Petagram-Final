@@ -26,4 +26,9 @@
         android:id="@+id/action_configurar_cuenta"
         android:title="Configurar cuenta">
     </item>
+
+    <item
+        android:id="@+id/action_recibir_notificaciones"
+        android:title="Recibir Notificaciones">
+    </item>
 </menu>

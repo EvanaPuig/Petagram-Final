@@ -37,15 +37,20 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".Activity.DetalleAnimalCompania" />
-        <activity android:name=".Activity.ConfigurarCuenta"></activity>
+        <activity android:name=".Activity.ConfigurarCuenta" />
 
-        <service
-            android:name=".NotificationService">
+        <service android:name=".NotificationService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-    </application>
+        <service android:name=".NotificacionIDTokenService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
+        <activity android:name=".Activity.NotificationsActivity"></activity>
+    </application>
 
 </manifest>

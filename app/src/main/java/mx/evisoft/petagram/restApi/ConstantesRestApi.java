@@ -27,4 +27,7 @@ public class ConstantesRestApi {
     // https://api.instagram.com/v1/users/2963122977/media/recent/?access_token=2241246656.07f04f0.55862b1d16a049af8c29f4281542cba1 
     public static final String URL_GET_RECENT_MEDIA_EVI = KEY_GET_INFORMATION_EVI + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
+    public static final String ROOT_URL_MY_WS = "https://calm-gorge-39910.herokuapp.com/";
+    public static final String KEY_POST_ID_TOKEN = "registrar-usuario/";
+
 }

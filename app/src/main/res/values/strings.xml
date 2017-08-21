@@ -23,4 +23,8 @@
     <string name="nombre_perfil">Tiny</string>
     <string name="likes">Likes</string>
     <string name="plikes">0</string>
+
+    <!-- Notificaciones -->
+    <string name="recibir_notificaciones">Recibir Notificaciones</string>
+    <string name="lanzar_notificacion">Lanzar Notificación</string>
 </resources>
