@@ -13,8 +13,11 @@ public class ConstantesRestApi {
     public static final String KEY_GET_INFORMATION_USER = "users/self/media/recent/";
     public static final String KEY_GET_INFORMATION_MARILYN = "users/258515851/media/recent/";
     public static final String KEY_GET_INFORMATION_EVI = "users/2963122977/media/recent/";
+    public static final String KEY_SET_LIKE = "media/{media-id}/likes";
 
-    //https://api.instagram.com/v1/users/self/media/recent/?access_token=ACCESS-TOKEN
+
+
+    //https://api.instagram.com/v1/users/self/media/recent/?access_token=2241246656.07f04f0.55862b1d16a049af8c29f4281542cba1 
     public static final String URL_GET_RECENT_MEDIA_USER = KEY_GET_INFORMATION_USER + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
     //marilyn 
@@ -29,5 +32,10 @@ public class ConstantesRestApi {
 
     public static final String ROOT_URL_MY_WS = "https://calm-gorge-39910.herokuapp.com/";
     public static final String KEY_POST_ID_TOKEN = "registrar-usuario/";
+
+    // https://api.instagram.com/v1/media/{media-id}/likes?access_token=2241246656.07f04f0.55862b1d16a049af8c29f4281542cba1 
+    public static final String KEY_PUT_LIKE =  KEY_SET_LIKE + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
+
+
 
 }

@@ -7,10 +7,12 @@ public class AnimalCompania {
 
     private String id;
     private String nombreCompleto;
+    private String idFoto;
     private String urlFoto;
     private int likes = 0;
 
-    public AnimalCompania(String urlFoto, String nombreCompleto, int numeroLikes) {
+    public AnimalCompania(String idFoto, String urlFoto, String nombreCompleto, int numeroLikes) {
+        this.idFoto = idFoto;
         this.urlFoto = urlFoto;
         this.nombreCompleto = nombreCompleto;
         this.likes = numeroLikes;
@@ -27,6 +29,14 @@ public class AnimalCompania {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIdFoto() {
+        return idFoto;
+    }
+
+    public void setIdFoto(String idFoto) {
+        this.idFoto = idFoto;
     }
 
     public String getNombreCompleto() {

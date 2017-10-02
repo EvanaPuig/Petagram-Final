@@ -124,7 +124,6 @@ public class RecyclerViewFragmentPresenter implements  IRecyclerViewFragmentPres
             }
         });
 
-
     }
 
     @Override

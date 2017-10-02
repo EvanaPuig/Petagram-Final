@@ -3,6 +3,7 @@ package mx.evisoft.petagram.adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,20 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import mx.evisoft.petagram.Activity.DetalleAnimalCompania;
 import mx.evisoft.petagram.R;
 import mx.evisoft.petagram.pojo.AnimalCompania;
+import mx.evisoft.petagram.restApi.EndpointsApi;
+import mx.evisoft.petagram.restApi.adapter.RestApiAdapter;
+import mx.evisoft.petagram.restApi.model.AnimalCompaniaResponse;
+import mx.evisoft.petagram.restApi.model.UsuarioResponse;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Evana Margáin Puig on 24/07/16.
@@ -51,7 +61,7 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
                 .placeholder(R.drawable.perro2)
                 .into(animalCompaniaViewHolder.imgvFotoAnimalCompania);
 
-        Integer numeroLikes = animalCompania.getLikes();
+        final Integer numeroLikes = animalCompania.getLikes();
 
         animalCompaniaViewHolder.txtvLikes.setText(numeroLikes.toString());
 
@@ -59,10 +69,14 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
             @Override
             public void onClick(View v) {
                 //Toast.makeText(activity, animalCompania.getNombre(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(activity, DetalleAnimalCompania.class);
+                /*Intent intent = new Intent(activity, DetalleAnimalCompania.class);
                 intent.putExtra("url", animalCompania.getUrlFoto());
                 intent.putExtra("like", animalCompania.getLikes());
-                activity.startActivity(intent);
+                activity.startActivity(intent);*/
+                likePic(animalCompania.getIdFoto(), animalCompania.getUrlFoto(), animalCompania.getNombreCompleto(), animalCompania.getLikes());
+
+                Integer nuevoLike = numeroLikes + 1;
+                animalCompaniaViewHolder.txtvLikes.setText(nuevoLike.toString());
 
             }
         });
@@ -85,6 +99,31 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
 
             }
         });*/
+    }
+
+    public void likePic(String idFoto, String urlFoto, String nombreCompleto, int numeroDeLikes){
+        Log.d("LIKE", "true");
+
+        final AnimalCompania animalCompania = new AnimalCompania(idFoto, urlFoto, nombreCompleto, numeroDeLikes);
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagramSinDes();
+        Call<ResponseBody> responseBody = endpointsApi.darLike(animalCompania.getIdFoto());
+
+        Log.d("idFoto", animalCompania.getIdFoto());
+
+        responseBody.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    Log.d("response", "postJSONRequest response.code : " + response.code());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("like error", t.toString());
+            }
+        });
     }
 
     @Override

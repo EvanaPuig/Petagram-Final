@@ -38,6 +38,8 @@ public class AnimalCompaniaDeserializador implements JsonDeserializer<AnimalComp
         for (int i = 0; i < animalCompaniaResponseData.size() ; i++) {
             JsonObject animalCompaniaResponseDataObject = animalCompaniaResponseData.get(i).getAsJsonObject();
 
+            String picId = animalCompaniaResponseDataObject.get(JsonKeys.MEDIA_ID).getAsString();
+
             JsonObject userJson     = animalCompaniaResponseDataObject.getAsJsonObject(JsonKeys.USER);
             String id               = userJson.get(JsonKeys.USER_ID).getAsString();
             String nombreCompleto   = userJson.get(JsonKeys.USER_FULLNAME).getAsString();
@@ -51,6 +53,7 @@ public class AnimalCompaniaDeserializador implements JsonDeserializer<AnimalComp
 
             AnimalCompania animalCompaniaActual = new AnimalCompania();
             animalCompaniaActual.setId(id);
+            animalCompaniaActual.setIdFoto(picId);
             animalCompaniaActual.setNombreCompleto(nombreCompleto);
             animalCompaniaActual.setUrlFoto(urlFoto);
             animalCompaniaActual.setNumeroLikes(likes);
@@ -59,6 +62,7 @@ public class AnimalCompaniaDeserializador implements JsonDeserializer<AnimalComp
 
             Log.d(TAG, animalCompaniaActual.getId().toString() + " " +
                     animalCompaniaActual.getNombreCompleto().toString()  + " " +
+                    animalCompaniaActual.getIdFoto().toString() + " " +
                     animalCompaniaActual.getUrlFoto().toString()  + " " +
                     animalCompaniaActual.getLikes()
 

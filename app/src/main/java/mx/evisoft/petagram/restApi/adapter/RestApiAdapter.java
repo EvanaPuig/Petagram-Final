@@ -26,6 +26,15 @@ public class RestApiAdapter {
         return retrofit.create(EndpointsApi.class);
     }
 
+    public EndpointsApi establecerConexionRestApiInstagramSinDes(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestApi.ROOT_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(EndpointsApi.class);
+    }
+
     public EndpointsApi establecerConexionRestAPI(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ConstantesRestApi.ROOT_URL_MY_WS)
