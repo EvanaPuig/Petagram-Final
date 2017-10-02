@@ -32,6 +32,8 @@ public class ConstantesRestApi {
 
     public static final String ROOT_URL_MY_WS = "https://calm-gorge-39910.herokuapp.com/";
     public static final String KEY_POST_ID_TOKEN = "registrar-usuario/";
+    public static final String KEY_POST_LIKE_FOTO = "registrar-like-foto/";
+    public static final String KEY_SEND_NOTIF = "notificacion-foto/{id}/{nombre_usuario}/";
 
     // https://api.instagram.com/v1/media/{media-id}/likes?access_token=2241246656.07f04f0.55862b1d16a049af8c29f4281542cba1 
     public static final String KEY_PUT_LIKE =  KEY_SET_LIKE + KEY_ACCESS_TOKEN + ACCESS_TOKEN;

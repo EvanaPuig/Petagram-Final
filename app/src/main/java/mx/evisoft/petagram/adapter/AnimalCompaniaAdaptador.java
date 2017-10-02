@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import mx.evisoft.petagram.pojo.AnimalCompania;
 import mx.evisoft.petagram.restApi.EndpointsApi;
 import mx.evisoft.petagram.restApi.adapter.RestApiAdapter;
 import mx.evisoft.petagram.restApi.model.AnimalCompaniaResponse;
+import mx.evisoft.petagram.restApi.model.LikeResponse;
 import mx.evisoft.petagram.restApi.model.UsuarioResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -122,6 +124,61 @@ public class AnimalCompaniaAdaptador extends RecyclerView.Adapter<AnimalCompania
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d("like error", t.toString());
+            }
+        });
+
+        String id_dispositivo = FirebaseInstanceId.getInstance().getToken();
+
+        this.enviarRegistroLike(id_dispositivo, idFoto, "user_id");
+    }
+
+    private void enviarRegistroLike(String idDispositivo, String idFoto, String idUsuario){
+        Log.d("LIKE", idDispositivo);
+        Log.d("LIKE", idFoto);
+        Log.d("LIKE", idUsuario);
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpoints = restApiAdapter.establecerConexionRestAPI();
+        Call<LikeResponse> usuarioResponseCall = endpoints.registrarLike(idDispositivo, idUsuario, idFoto);
+
+        usuarioResponseCall.enqueue(new Callback<LikeResponse>() {
+            @Override
+            public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
+                LikeResponse likeResponse = response.body();
+                Log.d("id_firebase", likeResponse.getId());
+                Log.d("usuario_firebase", likeResponse.getId_dispositivo());
+                Log.d("usuario_instagram", likeResponse.getId_usuario_instagram());
+                Log.d("id_foto", likeResponse.getId_foto());
+
+            }
+
+            @Override
+            public void onFailure(Call<LikeResponse> call, Throwable t) {
+                Log.d("error", t.toString());
+            }
+        });
+
+        this.enviarNotificacion("-KvQez7samAkvTFS1Kkk", "evi");
+
+    }
+
+    private void enviarNotificacion(String idDispositivo, String nombreUsuario){
+        Log.d("LIKE", idDispositivo);
+        Log.d("LIKE", nombreUsuario);
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpoints = restApiAdapter.establecerConexionRestAPI();
+        Call<ResponseBody> enviarNotificacionCall = endpoints.enviarNotificacion(idDispositivo, nombreUsuario);
+
+        enviarNotificacionCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("notificacion enviada", "notificacion correcta");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("error", t.toString());
             }
         });
     }

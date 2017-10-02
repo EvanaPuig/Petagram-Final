@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private String userId;
 
+    private String user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+
+
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
-
+        Log.i( "dd","Extra:" + user );
 
         setUpViewPager();
 
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 userId = "2963122977";
             }else if(user.equals("marilynferetrius")){
                 userId = "258515851";
+            }else{
+                userId = "2241246656";
             }
         }else{
             userId = "2241246656";
@@ -72,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
